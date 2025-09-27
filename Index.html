@@ -1,1 +1,89 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Transmission Media Comparison Dashboard</title> <link rel="stylesheet" href="styles.css" /> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> </head> <body> <div class="container"> <h1>🖥️ Transmission Media Comparison Dashboard</h1> <section> <h2>🎛️ Comparison Filters</h2> <div class="filters"> <label><input type="checkbox" id="speed" checked /> Speed</label> <label><input type="checkbox" id="cost" checked /> Cost</label> <label><input type="checkbox" id="interference" /> Interference</label> <label><input type="checkbox" id="security" /> Security</label> <label><input type="checkbox" id="mobility" /> Mobility</label> </div> </section> <section> <h2>📊 Comparison Table</h2> <table id="comparison-table"> <thead> <tr> <th>Feature</th> <th>Wired (Ethernet, Fiber)</th> <th>Wireless (Wi-Fi, 5G, Bluetooth)</th> </tr> </thead> <tbody> <tr data-feature="speed"> <td>Speed</td> <td>Up to 100 Gbps (Fiber)</td> <td>Up to 10 Gbps (Wi-Fi 6/6E, 5G)</td> </tr> <tr data-feature="latency"> <td>Latency</td> <td>Low (1-10 ms)</td> <td>Medium to High (10-100 ms)</td> </tr> <tr data-feature="cost"> <td>Cost</td> <td>Higher setup; cheaper long-term</td> <td>Lower setup; higher maintenance</td> </tr> <tr data-feature="interference"> <td>Interference</td> <td>Minimal (shielded cables)</td> <td>Susceptible to environment</td> </tr> <tr data-feature="security"> <td>Security</td> <td>More secure (physical access)</td> <td>Less secure (interception possible)</td> </tr> <tr data-feature="mobility"> <td>Mobility</td> <td>Low</td> <td>High</td> </tr> </tbody> </table> </section> <section> <h2>📈 Speed Comparison (Gbps)</h2> <canvas id="speedChart" width="400" height="200"></canvas> </section> <section> <h2>📦 Media Profiles</h2> <div class="profiles"> <button onclick="toggleProfile('ethernet')">Ethernet</button> <div id="ethernet" class="profile hidden">Reliable and common in offices. Speeds up to 10 Gbps with Cat6.</div> <button onclick="toggleProfile('fiber')">Fiber Optic</button> <div id="fiber" class="profile hidden">Best speed and reliability, but costly to install.</div> <button onclick="toggleProfile('wifi')">Wi-Fi 6</button> <div id="wifi" class="profile hidden">Great for home/mobile use, improving speed and latency.</div> <button onclick="toggleProfile('fifthg')">5G</button> <div id="fifthg" class="profile hidden">High speed wireless, ideal for mobility and large-scale networks.</div> <button onclick="toggleProfile('bluetooth')">Bluetooth</button> <div id="bluetooth" class="profile hidden">Low-speed, short-range — good for peripherals.</div> </div> </section> </div> <script src="script.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transmission Media Comparison Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🖥️ Transmission Media Comparison Dashboard</h1>
+        <section>
+            <h2>🎛️ Comparison Filters</h2>
+            <div class="filters">
+                <label><input type="checkbox" id="speed" checked /> Speed</label>
+                <label><input type="checkbox" id="cost" checked /> Cost</label>
+                <label><input type="checkbox" id="interference" /> Interference</label>
+                <label><input type="checkbox" id="security" /> Security</label>
+                <label><input type="checkbox" id="mobility" /> Mobility</label>
+            </div>
+        </section>
+        <section>
+            <h2>📊 Comparison Table</h2>
+            <table id="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Wired (Ethernet, Fiber)</th>
+                        <th>Wireless (Wi-Fi, 5G, Bluetooth)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-feature="speed">
+                        <td>Speed</td>
+                        <td>Up to 100 Gbps (Fiber)</td>
+                        <td>Up to 10 Gbps (Wi-Fi 6/6E, 5G)</td>
+                    </tr>
+                    <tr data-feature="latency">
+                        <td>Latency</td>
+                        <td>Low (1-10 ms)</td>
+                        <td>Medium to High (10-100 ms)</td>
+                    </tr>
+                    <tr data-feature="cost">
+                        <td>Cost</td>
+                        <td>Higher setup; cheaper long-term</td>
+                        <td>Lower setup; higher maintenance</td>
+                    </tr>
+                    <tr data-feature="interference">
+                        <td>Interference</td>
+                        <td>Minimal (shielded cables)</td>
+                        <td>Susceptible to environment</td>
+                    </tr>
+                    <tr data-feature="security">
+                        <td>Security</td>
+                        <td>More secure (physical access)</td>
+                        <td>Less secure (interception possible)</td>
+                    </tr>
+                    <tr data-feature="mobility">
+                        <td>Mobility</td>
+                        <td>Low</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>📈 Speed Comparison (Gbps)</h2>
+            <canvas id="speedChart" width="400" height="200"></canvas>
+        </section>
+        <section>
+            <h2>📦 Media Profiles</h2>
+            <div class="profiles">
+                <button onclick="toggleProfile('ethernet-profile')">Ethernet</button>
+                <div id="ethernet-profile" class="profile hidden">Reliable and common in offices. Speeds up to 10 Gbps with Cat6.</div>
+                <button onclick="toggleProfile('fiber-profile')">Fiber Optic</button>
+                <div id="fiber-profile" class="profile hidden">Best speed and reliability, but costly to install.</div>
+                <button onclick="toggleProfile('wifi-profile')">Wi-Fi 6</button>
+                <div id="wifi-profile" class="profile hidden">Great for home/mobile use, improving speed and latency.</div>
+                <button onclick="toggleProfile('fifthg-profile')">5G</button>
+                <div id="fifthg-profile" class="profile hidden">High speed wireless, ideal for mobility and large-scale networks.</div>
+                <button onclick="toggleProfile('bluetooth-profile')">Bluetooth</button>
+                <div id="bluetooth-profile" class="profile hidden">Low-speed, short-range — good for peripherals.</div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
